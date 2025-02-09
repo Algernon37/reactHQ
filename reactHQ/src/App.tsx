@@ -1,5 +1,6 @@
 import HeaderComponent from './components/HeaderComponent'
 import TrandingCapital from './components/TradingCapital'
+import ChartComponent from './components/ChartComponent '
 
 const App: React.FC = () => {
 
@@ -8,6 +9,7 @@ const App: React.FC = () => {
         <div className='w-[100%] lg:w-[70%]'>
           <HeaderComponent />
           <TrandingCapital />
+          <ChartComponent />
         </div>
     </div>
   )

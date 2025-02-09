@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import useFetchCapitalData  from "../hooks/useFetchCapitalData";
-import {style} from './inedx.css'
 
 const TrandingCapital: React.FC = () => {
 
