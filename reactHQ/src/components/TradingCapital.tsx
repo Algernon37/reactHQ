@@ -3,10 +3,10 @@ import useFetchCapitalData  from "../hooks/useFetchCapitalData";
 
 const TrandingCapital: React.FC = () => {
 
-  const [trandingCapital, setTrandingCapital] = useState(0)
-  const [balance, setBalance] = useState(0)
-  const [onHold, setOnHold] = useState(0)
-  const [trandingCapitalCurrency, setTrandingCapitalCurrency] = useState('')
+  const [trandingCapital, setTrandingCapital] = useState<number | null>(0);
+  const [balance, setBalance] = useState<number | null>(0);
+  const [onHold, setOnHold] = useState<number | null>(0);
+  const [trandingCapitalCurrency, setTrandingCapitalCurrency] = useState<string | null>('');
 
   useEffect(() => {
     useFetchCapitalData(
@@ -18,7 +18,7 @@ const TrandingCapital: React.FC = () => {
   },[])
 
   return (
-    <div className='flex justify-between items-end text-[#fff]'>
+    <div className='flex justify-between items-end text-[#fff] mb-5 px-3'>
       <div className='flex flex-col'>
         <h1 className='text-gray-500 font-semibold text-xs sm:text-base'>TRANDING CAPITAL</h1>
         <p className='text-4xl sm:text-5xl uppercase font-light'>{trandingCapital}{trandingCapitalCurrency}</p>

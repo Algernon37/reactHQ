@@ -8,7 +8,7 @@ const HeaderComponent: React.FC = () => {
     };
 
     return (
-        <header className="flex justify-between items-center py-8">
+        <header className="flex justify-between items-center py-8 px-3">
             <div className="flex items-center gap-4">
                 <button
                     className="relative z-20 flex flex-col justify-between w-8 h-9 border-none cursor-pointer mb-[-35px]"
@@ -31,7 +31,7 @@ const HeaderComponent: React.FC = () => {
                     />
                 </button>
                 <nav
-                    className={`absolute top-0 left-0 w-full h-full bg-gray-900 transition-transform duration-500 ${
+                    className={`absolute z-2 top-0 left-0 w-full h-full bg-gray-900 transition-transform duration-500 ${
                     isOpen ? 'translate-x-0' : '-translate-x-full'
                     }`}
                 >

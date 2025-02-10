@@ -1,6 +1,22 @@
 import { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
+const customLabelPlugin = {
+  id: 'customLabelPlugin',
+  beforeDraw: (chart: Chart) => {
+    const ctx = chart.ctx;
+    const { top, left, width, height } = chart.chartArea;
+
+    ctx.save();
+    ctx.fillStyle = 'rgb(116, 161, 88)';
+    ctx.font = '20px Roboto';
+    ctx.textAlign = 'center';
+    ctx.fillText('+32.6%', left + width / 2, top + height / 1.5);
+    ctx.restore();
+  }
+};
+Chart.register(customLabelPlugin);
+
 const ChartComponent = () => {
   const chartRef = useRef<Chart | null>(null);
 
@@ -15,56 +31,47 @@ const ChartComponent = () => {
 
       if (ctx) {
         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.width);
-        gradient.addColorStop(0, 'rgba(33, 119, 208, 0.6)');  
-        gradient.addColorStop(1, 'rgba(33, 119, 208, 0)'); 
+        gradient.addColorStop(0, 'rgba(33, 124, 218, 0.6)');
+        gradient.addColorStop(0.5, 'rgba(33, 124, 218, 0)');
 
         chartRef.current = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: ['22.04', '23.04', '24.04', '25.04', '26.04',' '],
-            datasets: [{
-              label: '+32.6%',
-              data: [25, 27, 26, 28, 27, 29], 
-              borderColor: 'rgba(33, 119, 208, 1)',
-              backgroundColor: gradient,   
-              borderWidth: 2,
-              fill: true,
-              tension: 0.4,
-              pointRadius: 0,
-            }],
+            labels: [' ', '22.04', '23.04', '24.04', '25.04', '26.04',' '],
+            datasets: [
+              {
+                label: '+32.6%',
+                data: [22, 24, 24, 25, 24, 23, 24],
+                borderColor: 'rgba(33, 124, 218, 1)',
+                backgroundColor: gradient,
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0
+              }
+            ]
           },
           options: {
             plugins: {
-              legend: {
-                display: false,
-              },
+              legend: { display: false }
             },
             scales: {
-                x: {
-                    grid: {
-                      color: 'rgba(255, 255, 255, 0.2)', 
-                    }
-                  },
-                  y: {
-                    grid: {
-                      color: 'rgba(255, 255, 255, 0.2)',
-                    },
-                    ticks:{
-                        display: false
-                    }
-                }
-            },
-            layout: {
-                padding: 0
+              x: {
+                grid: { color: 'rgba(255, 255, 255, 0.2)' }
+              },
+              y: {
+                grid: { color: 'rgba(255, 255, 255, 0.2)' },
+                ticks: { display: false }
+              }
             }
-          },
+          }
         });
       }
     }
   }, []);
 
   return (
-    <canvas className='mt-5' id="myChart"></canvas>
+    <canvas id="myChart" className="absolute left-1/2 -translate-x-1/2 !w-[120vw] !h-auto md:!w-full md:!h-auto"></canvas>
   );
 };
 
