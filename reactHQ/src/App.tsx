@@ -1,8 +1,7 @@
 import HeaderComponent from './components/HeaderComponent'
 import TrandingCapital from './components/TradingCapital'
-import ChartComponent from './components/ChartComponent '
 import BotsComponent from './components/BotsComponent'
-
+import FooterComponent from './components/FooterComponent'
 
 const App: React.FC = () => {
 
@@ -11,8 +10,8 @@ const App: React.FC = () => {
         <div className='w-[100%] lg:w-[70%] relative w-screen overflow-hidden'>
           <HeaderComponent />
           <TrandingCapital />
-          <ChartComponent />
           <BotsComponent />
+          <FooterComponent />
         </div>
     </div>
   )

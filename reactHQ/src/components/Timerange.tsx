@@ -1,16 +1,12 @@
 import {useState} from 'react'
 import ButtonTime from './ButtonTime';
+import {TimeRangeProps} from '../interfaces/interfaces'
 
-const TimeRange: React.FC = () => {
-    const [selectedButton, setSelectedButton] = useState<string>('');
-
-    const handleButtonClick = (text: string) => {
-        setSelectedButton(text);  
-    };
+const TimeRange: React.FC<TimeRangeProps> = ({selectedButton, handleButtonClick }) => {
 
     return (
-        <div className='flex items-center gap-3 px-3 justify-center'>
-            <h1 className='text-gray-600 font-semibold text-sm'>Time Range:</h1>
+        <div className='flex items-center gap-3 px-3 mb-5 justify-center'>
+            <h1 className='text-gray-500 font-semibold text-sm'>Time Range:</h1>
             <ButtonTime
                 text={'24h'}
                 isSelected={selectedButton === '24h'}

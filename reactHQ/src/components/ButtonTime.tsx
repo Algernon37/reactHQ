@@ -4,8 +4,8 @@ const ButtonTime: React.FC<ButtonTimeComponentProps> = ({ text, isSelected, onCl
     return (
       <button
         onClick={onClick}
-        className={`text-sm border rounded-2xl px-2 py-0.5 cursor-pointer 
-          ${isSelected ? 'text-white border-white' : 'text-gray-600 border-gray-600/50'}
+        className={`text-sm border rounded-2xl px-2 py-0.5 px- cursor-pointer 
+          ${isSelected ? 'text-white border-white' : 'text-gray-500 border-gray-500/50'}
         `}
       >
         {text}

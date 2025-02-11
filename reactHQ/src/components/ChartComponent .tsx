@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import {ChartComponentProps} from '../interfaces/interfaces'
+
 
 const customLabelPlugin = {
   id: 'customLabelPlugin',
@@ -17,7 +19,7 @@ const customLabelPlugin = {
 };
 Chart.register(customLabelPlugin);
 
-const ChartComponent = () => {
+const ChartComponent: React.FC<ChartComponentProps> = ({selectedButton, dataValues}) => {
   const chartRef = useRef<Chart | null>(null);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const ChartComponent = () => {
             datasets: [
               {
                 label: '+32.6%',
-                data: [22, 24, 24, 25, 24, 23, 24],
+                data: dataValues,
                 borderColor: 'rgba(33, 124, 218, 1)',
                 backgroundColor: gradient,
                 borderWidth: 2,
@@ -68,7 +70,7 @@ const ChartComponent = () => {
         });
       }
     }
-  }, []);
+  }, [selectedButton, dataValues]);
 
   return (
     <canvas id="myChart" className="absolute left-1/2 -translate-x-1/2 !w-[120vw] !h-auto md:!w-full md:!h-auto"></canvas>
